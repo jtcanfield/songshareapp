@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 export default class PlayListItem extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       dataset: []
     };
@@ -15,9 +15,6 @@ export default class PlayListItem extends Component {
     })
   }
   render() {
-    this.state.dataset.map(x =>{
-      console.log(x);
-    })
     return (
       <div className="PlayList">
         {this.state.dataset.map(x =>

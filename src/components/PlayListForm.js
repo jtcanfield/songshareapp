@@ -13,7 +13,7 @@ export default class PlayListForm extends Component {
     };
   }
   componentDidMount(){
-    console.log("Component Did Actually Mount");
+    // console.log("Component Did Actually Mount");
   }
   handleTextChange(event){
     event.preventDefault();
@@ -24,7 +24,6 @@ export default class PlayListForm extends Component {
     event.preventDefault();
     this.setState({userName: this.state.userName, songTitle: this.state.songTitle, songArtist: this.state.songArtist, songNotes: this.state.songNotes});
     let listItem = JSON.stringify(this.state);
-    console.log(listItem);
     fetch("https://tiny-lasagna-server.herokuapp.com/collections/playlisting", {
       method: "POST",
       body: listItem,
@@ -34,10 +33,10 @@ export default class PlayListForm extends Component {
       }
     }).then(response => {
       console.log(response, "yay");
+      this.setState({userName: '', songNotes: '', songArtist: '', songTitle:''});
     }).catch(err => {
       console.log(err, "boo!");
     });
-    this.setState({userName: '', songNotes: '', songArtist: '', songTitle:''});
   }
   render() {
     return (
