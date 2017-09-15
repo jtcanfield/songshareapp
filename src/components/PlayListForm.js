@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 
 export default class PlayListForm extends Component {
-  constructor(){
-  super()
-  this.handleSubmit = this.handleSubmit.bind(this);
+  constructor(props){
+  super(props)
   this.handleTextChange = this.handleTextChange.bind(this);
   this.state = {
     userName: "",
@@ -12,17 +11,13 @@ export default class PlayListForm extends Component {
     songNotes: "",
     };
   }
-  componentDidMount(){
-    // console.log("Component Did Actually Mount");
-  }
   handleTextChange(event){
     event.preventDefault();
     //using [ ] can turn a string into an object selector
     this.setState({[event.target.id]: event.target.value});
   }
-  handleSubmit(event){
+  handleSubmit = (event) => {
     event.preventDefault();
-    this.setState({userName: this.state.userName, songTitle: this.state.songTitle, songArtist: this.state.songArtist, songNotes: this.state.songNotes});
     let listItem = JSON.stringify(this.state);
     fetch("https://tiny-lasagna-server.herokuapp.com/collections/playlisting", {
       method: "POST",
@@ -43,7 +38,7 @@ export default class PlayListForm extends Component {
       <div className="PlayListForm">
         <form onSubmit={this.handleSubmit}>
           <input onChange={this.handleTextChange} type="text" id="userName"
-          placeholder="Whats you name?" value={this.state.userName}/>
+          placeholder="Whats you name?" value={this.state.userNamevalue}/>
           <input onChange={this.handleTextChange} type="text" id="songArtist"
           placeholder="Artist/Band" value={this.state.songArtist}/>
           <input onChange={this.handleTextChange} type="text" id="songTitle"
