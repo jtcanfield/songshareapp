@@ -4,9 +4,7 @@ export default class PlayListForm extends Component {
   constructor(){
   super()
   this.handleSubmit = this.handleSubmit.bind(this);
-  this.handleSongNameChange = this.handleSongNameChange.bind(this);
-  this.handleArtistChange = this.handleArtistChange.bind(this);
-  this.handleNotesChange = this.handleNotesChange.bind(this);
+  this.handleTextChange = this.handleTextChange.bind(this);
   this.state = {
     songname: "",
     songnamevalue: "",
@@ -19,20 +17,12 @@ export default class PlayListForm extends Component {
   componentDidMount(){
     console.log("Component Did Actually Mount");
   }
-  handleSongNameChange(event){
+  handleTextChange(event){
     event.preventDefault();
-    this.setState({songnamevalue: event.target.value});
-  }
-  handleArtistChange(event){
-    event.preventDefault();
-    this.setState({artistvalue: event.target.value});
-  }
-  handleNotesChange(event){
-    event.preventDefault();
-    this.setState({notesvalue: event.target.value});
+    //using [ ] can turn a string into an object selector
+    this.setState({[event.target.id+"value"]: event.target.value});
   }
   handleSubmit(event){
-    console.log("Submit Fired");
     event.preventDefault();
     this.setState(
       {
@@ -43,15 +33,14 @@ export default class PlayListForm extends Component {
     )
   }
   render() {
-    console.log("Render Fired");
     return (
       <div className="PlayListForm">
         <form onSubmit={this.handleSubmit}>
-          <input onChange={this.handleArtistChange} type="text" id="Artist"
+          <input onChange={this.handleTextChange} type="text" id="artist"
           placeholder="Artist/Band" value={this.state.artistvalue}/>
-          <input onChange={this.handleSongNameChange} type="text" id="Songname"
+          <input onChange={this.handleTextChange} type="text" id="songname"
           placeholder="Song Name" value={this.state.songnamevalue}/>
-          <input onChange={this.handleNotesChange} type="textarea" id="Notes"
+          <input onChange={this.handleTextChange} type="textarea" id="notes"
           placeholder="Notes about Song:" value={this.state.notesvalue}/>
           <button type="submit">"SUBMIT"</button>
         </form>
