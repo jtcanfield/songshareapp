@@ -44,12 +44,7 @@ export default class PlayListForm extends Component {
           placeholder="Notes about Song:" value={this.state.notesvalue}/>
           <button type="submit">"SUBMIT"</button>
         </form>
-        <p>
-
-
-
-
-        {this.state.artist}
+        <p>{this.state.artist}
         {this.state.songname}
         {this.state.notes}</p>
       </div>
