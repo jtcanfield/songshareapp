@@ -4,19 +4,20 @@ import '../styles/App.css';
 import NavBar from './NavBar.js';
 import PlayList from './PlayList.js';
 import PlayListForm from './PlayListForm.js';
-import PlayListItem from './PlayListItem.js';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+        <div className="NavBar-Holder">
+          <NavBar />
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <div className="PlayListForm-Holder">
+          <PlayListForm />
+        </div>
+        <div className="PlayList-Holder">
+          <PlayList />
+        </div>
       </div>
     );
   }
