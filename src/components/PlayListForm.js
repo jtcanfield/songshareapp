@@ -6,11 +6,11 @@ export default class PlayListForm extends Component {
   this.handleSubmit = this.handleSubmit.bind(this);
   this.handleTextChange = this.handleTextChange.bind(this);
   this.state = {
-    songname: "",
+    songTitle: "",
     songnamevalue: "",
-    artist: "",
+    songArtist: "",
     artistvalue: "",
-    notes: "",
+    songNotes: "",
     notesvalue: ""
     };
   }
@@ -26,9 +26,9 @@ export default class PlayListForm extends Component {
     event.preventDefault();
     this.setState(
       {
-        songname: this.state.songnamevalue,
-        artist: this.state.artistvalue,
-        notes: this.state.notesvalue
+        songTitle: this.state.songnamevalue,
+        songArtist: this.state.artistvalue,
+        songNotes: this.state.notesvalue
       }
     )
   }
@@ -44,9 +44,9 @@ export default class PlayListForm extends Component {
           placeholder="Notes about Song:" value={this.state.notesvalue}/>
           <button type="submit">"SUBMIT"</button>
         </form>
-        <p>{this.state.artist}
-        {this.state.songname}
-        {this.state.notes}</p>
+        <p>{this.state.songTitle}
+        {this.state.songArtist}
+        {this.state.songNotes}</p>
       </div>
     );
   }
